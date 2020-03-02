@@ -46,7 +46,7 @@ resource "aws_lb" "example" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = ["${aws_security_group.allow_tls.id}"]
-  subnets            = ["${aws_subnet.public.*.id}"]
+  subnets            = aws_subnet.public.*.id
 
 }
 
