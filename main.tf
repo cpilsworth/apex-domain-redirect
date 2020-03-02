@@ -1,6 +1,6 @@
 provider "aws" {
   version = "~> 2.8"
-  region = "eu-west-1"
+  region  = "eu-west-1"
 }
 resource "aws_globalaccelerator_accelerator" "example" {
   name            = "apex-domain-redirect"
