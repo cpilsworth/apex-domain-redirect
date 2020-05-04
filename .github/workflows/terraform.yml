@@ -8,13 +8,6 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@master
-      - uses: actions/setup-node@v1        
-        with:
-          node-version: '10.x'
-      - name: Build Lambda zip
-        run: |
-          cd lambda
-          npm run build
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
