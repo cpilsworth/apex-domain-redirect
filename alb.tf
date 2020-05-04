@@ -11,7 +11,7 @@ resource "aws_lb_listener" "https" {
   port              = "443"
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-FS-2018-06"
-  certificate_arn   = "arn:aws:acm:eu-west-1:781750785623:certificate/4915d617-0f04-450b-975e-d2ea808a2400"
+  certificate_arn   = var.certificate_arn != "" ? var.certificate_arn : null
 
   default_action {
     type = "fixed-response"
@@ -78,10 +78,4 @@ resource "aws_lb_listener_rule" "http" {
       values = [each.key]
     }
   }
-}
-
-resource "aws_lb_listener_certificate" "example" {
-  count           = var.certificate_arn != "" ? 1 : 0
-  listener_arn    = aws_lb_listener.https.arn
-  certificate_arn = var.certificate_arn
 }
